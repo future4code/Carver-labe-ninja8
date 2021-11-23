@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class Cadastro extends Component {
+export default class Cadastro extends React.Component {
   render() {
     return (
       <div>
