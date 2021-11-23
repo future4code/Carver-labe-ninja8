@@ -79,9 +79,11 @@ export default class Cadastro extends React.Component {
 
   render() {
     return (
+      
       <TelaCadastro>
         {/* <HeaderApp>logo e navegação</HeaderApp> */}
         <TituloCadastro>
+        <button onClick={this.props.irParaHome}> Home</button>
           <h3>Cadastre o seu serviço</h3>
         </TituloCadastro>
         <InputCadastro>
@@ -120,6 +122,7 @@ export default class Cadastro extends React.Component {
             onChange={this.handleprazo}
           ></input>
         </InputCadastro>
+       
         <ButtonCadastro>
           <button>Cadastrar</button>
         </ButtonCadastro>
