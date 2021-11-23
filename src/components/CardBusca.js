@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class AppContainer extends Component {
+export class CardBusca extends Component {
   render() {
     return (
       <div>
