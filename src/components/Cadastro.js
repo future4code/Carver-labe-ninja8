@@ -76,6 +76,7 @@ export default class Cadastro extends React.Component {
       })
   }
 
+
   render() {
     return (
       <TelaCadastro>
