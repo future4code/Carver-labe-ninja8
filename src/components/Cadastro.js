@@ -15,7 +15,7 @@ export default class Cadastro extends React.Component {
       titulo: '',
       descricao: '',
       preco: '',
-      formaPagamento: '',
+      formaPagamento: [],
       prazo: ''
     }
     this.handletitulo = this.handletitulo.bind(this)
@@ -29,35 +29,33 @@ export default class Cadastro extends React.Component {
     this.setState({
       titulo: e.target.value
     })
-    console.log(this.state.titulo, 'Foi o título')
   }
 
   handledescricao = e => {
     this.setState({
       descricao: e.target.value
     })
-    console.log(this.state.descricao, 'Foi a descrição')
   }
 
   handlepreco = e => {
+    const precoModificado = Number(e.target.value)
     this.setState({
-      preco: e.target.value
+      preco: precoModificado
     })
-    console.log(this.state.preco, 'Foi o preço')
   }
 
   handleformaPagamento = e => {
+    const list = []
+    list.push(e.target.value)
     this.setState({
-      formaPagamento: e.target.value
+      formaPagamento: list
     })
-    console.log(this.state.formaPagamento, 'Foi o pagamento')
   }
 
   handleprazo = e => {
     this.setState({
       prazo: e.target.value
     })
-    console.log(this.state.prazo, 'Foi o prazo')
   }
 
   addNinja = () => {
@@ -128,14 +126,14 @@ export default class Cadastro extends React.Component {
             onChange={this.handlepreco}
           ></input>
           <select
-            value={this.state.formaPagamento}
+            value={this.state.formaPagamento[0]}
             onChange={this.handleformaPagamento}
           >
-            <option value={this.state.formaPagamento}>Cartão de Crédito</option>
-            <option value={this.state.formaPagamento}>Cartão de débito</option>
-            <option value={this.state.formaPagamento}>Pix</option>
-            <option value={this.state.formaPagamento}>PayPal</option>
-            <option value={this.state.formaPagamento}>Boleto</option>
+            <option value="cartaoCred">Cartão de Crédito</option>
+            <option value="cartDeb">Cartão de débito</option>
+            <option value="pix">Pix</option>
+            <option value="paypal">PayPal</option>
+            <option value="boleto">Boleto</option>
           </select>
           <input
             type="date"
