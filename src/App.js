@@ -1,16 +1,16 @@
 import React from 'react'
-import { AppContainer } from './Styles'
-import { Home } from './components/Home'
-import { Cadastro } from './components/Cadastro'
-import { FiltrosLista } from './components/FiltrosLista'
-import { DetalhesServico } from './components/DetalhesServico'
-import { Carrinho } from './components/Carrinho'
+import { AppContainer } from './styles'
+import Home from './components/Home'
+import Cadastro from './components/Cadastro'
+import FiltrosLista from './components/FiltrosLista'
+import DetalhesServico from './components/DetalhesServico'
+import Carrinho from './components/Carrinho'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      telaAtual: '+ Detalhes Serviço',
+      telaAtual: 'Cadastro',
       Carrinho: []
     }
     this.irHome = this.irHome.bind(this)
