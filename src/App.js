@@ -36,6 +36,7 @@ export default class App extends React.Component {
         )
       case 'Carrinho':
         return (
+          
           <Carrinho
             selectedId={this.state.idFicha}
             irCarrinho={this.irCarrinho}
