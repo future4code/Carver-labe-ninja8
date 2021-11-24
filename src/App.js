@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      telaAtual: 'Home',
+      telaAtual: 'Cadastro',
       Carrinho: []
     }
     this.irHome = this.irHome.bind(this)

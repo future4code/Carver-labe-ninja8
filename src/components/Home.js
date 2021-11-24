@@ -1,4 +1,4 @@
-import react from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Header = styled.div`
@@ -19,7 +19,7 @@ const Centro = styled.div`
   margin-top: 100px;
 `
 
-export default class Home extends react.Component {
+export default class Home extends React.Component {
   render() {
     return (
       <div>

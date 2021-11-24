@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import {
+  HeaderApp,
   TelaCadastro,
   TituloCadastro,
   InputCadastro,
@@ -76,11 +77,26 @@ export default class Cadastro extends React.Component {
       })
   }
 
-
   render() {
     return (
       <TelaCadastro>
-        {/* <HeaderApp>logo e navegação</HeaderApp> */}
+        <HeaderApp>
+          <a href="Home" onClick={this.props.irHome}>
+            <img
+              src="https://i.postimg.cc/VsX1fLHZ/Design-sem-nome.png"
+              alt="Logo de um ninja."
+            />
+          </a>
+
+          <p>O talento certo, no momento certo.</p>
+
+          <a href="Home" onClick={this.props.irHome}>
+            <img
+              src="https://i.postimg.cc/SRK1BdXM/Design-sem-nome-3.png"
+              alt="Escrito LabeNinjas."
+            />
+          </a>
+        </HeaderApp>
         <TituloCadastro>
           <h3>Cadastre o seu serviço</h3>
         </TituloCadastro>
