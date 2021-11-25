@@ -25,25 +25,25 @@ export default class App extends React.Component {
         return <Home irHome={this.irHome} />
       case 'Cadastro':
         return <Cadastro irCadastro={this.irCadastro} />
-      //     // case 'Filtros e lista':
-      //     //   return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
-      //     // case '+ Detalhes Serviço':
-      //     //   return (
-      //     //     <DetalhesServico
-      //     //       selectedId={this.state.idFicha}
-      //     //       irDetalhesServico={this.irDetalhesServico}
-      //     //     />
-      //     //   )
-      //     // case 'Carrinho':
-      //     //   return (
+      // case 'Filtros e lista':
+      //   return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
+      // case '+ Detalhes Serviço':
+      //   return (
+      //     <DetalhesServico
+      //       selectedId={this.state.idFicha}
+      //       irDetalhesServico={this.irDetalhesServico}
+      //     />
+      //   )
+      // case 'Carrinho':
+      //   return (
 
-      //     //     <Carrinho
-      //     //       selectedId={this.state.idFicha}
-      //     //       irCarrinho={this.irCarrinho}
-      //     //     />
-      //     //   )
-      //     // default:
-      //     //   return <Home irHome={this.irHome} />
+      //     <Carrinho
+      //       selectedId={this.state.idFicha}
+      //       irCarrinho={this.irCarrinho}
+      //     />
+      //   )
+      default:
+        return <Home irHome={this.irHome} />
     }
   }
 
