@@ -8,11 +8,12 @@ import React from 'react'
 // import Carrinho from './components/Carrinho'
 import InteractiveList from './components/CardCarrinho'
 
+
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      telaAtual: 'Cadastro',
+      telaAtual: 'Home',
       Carrinho: []
     }
     this.irHome = this.irHome.bind(this)
@@ -36,14 +37,14 @@ export default class App extends React.Component {
       //       irDetalhesServico={this.irDetalhesServico}
       //     />
       //   )
-      case 'Carrinho':
-        return (
-          
-          <Carrinho
-            selectedId={this.state.idFicha}
-            irCarrinho={this.irCarrinho}
-          />
-        )
+      // case 'Carrinho':
+      //   return (
+
+      //     <Carrinho
+      //       selectedId={this.state.idFicha}
+      //       irCarrinho={this.irCarrinho}
+      //     />
+      //   )
       default:
         return <Home irHome={this.irHome} />
     }
