@@ -1,16 +1,11 @@
 import React from 'react'
-import { AppContainer } from './styles'
-import Home from './components/Home'
-import Cadastro from './components/Cadastro'
-// import FiltrosLista from './components/FiltrosLista'
-import DetalhesServico from './components/DetalhesServico'
-// import Carrinho from './components/Carrinho'
+
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      telaAtual: '+ Detalhes Serviço',
+
       Carrinho: []
     }
     this.irHome = this.irHome.bind(this)
@@ -27,45 +22,44 @@ export default class App extends React.Component {
         return <Cadastro irCadastro={this.irCadastro} />
       // case 'Filtros e lista':
       //   return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
-      case '+ Detalhes Serviço':
-        return (
-          <DetalhesServico
-            selectedId={this.state.idFicha}
-            irDetalhesServico={this.irDetalhesServico}
-          />
-        )
-      // case 'Carrinho':
-      //   return (
+
       //     <Carrinho
       //       selectedId={this.state.idFicha}
       //       irCarrinho={this.irCarrinho}
       //     />
       //   )
-      // default:
-      //   return <Home irHome={this.irHome} />
+
     }
   }
 
-  irHome = () => {
-    this.setState({ telaAtual: 'Home' })
-  }
+  // irHome = () => {
+  //   this.setState({ telaAtual: 'Home' })
+  // }
 
-  irCadastro = () => {
-    this.setState({ telaAtual: 'Cadastro' })
-  }
+  // irCadastro = () => {
+  //   this.setState({ telaAtual: 'Cadastro' })
+  // }
 
-  irFiltrosLista = () => {
-    this.setState({ telaAtual: 'Filtros e lista' })
-  }
+  // irFiltrosLista = () => {
+  //   this.setState({ telaAtual: 'Filtros e lista' })
+  // }
 
-  irDetalhesServico = id => {
-    this.setState({ telaAtual: '+ Detalhes Serviço', idFicha: id })
-  }
+  // irDetalhesServico = id => {
+  //   this.setState({ telaAtual: '+ Detalhes Serviço', idFicha: id })
+  // }
 
-  irCarrinho = id => {
-    this.setState({ telaAtual: 'Carrinho', idFicha: id })
-  }
+  // irCarrinho = id => {
+  //   this.setState({ telaAtual: 'Carrinho', idFicha: id })
+  // }
   render() {
-    return <AppContainer>{this.escolheTela()}</AppContainer>
+    return (
+      <div>
+        <InteractiveList />
+      </div>
+      // // <AppContainer>
+      //   {/* {this.escolheTela()} */}
+
+      // {/* </AppContainer> */}
+    )
   }
 }

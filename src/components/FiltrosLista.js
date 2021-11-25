@@ -1,30 +1,11 @@
+import React from "react";
+import axios from "axios";
+
+
 export default class FiltrosLista extends React.Component {
     state = {
       prestadores: "",
-      listaDePosts: [
-
-       
-        {
-          id: Math.random(),
-          imagem: "",
-          nome: "Assassino de ALUGUEL",
-          preco: 70
-        },
-        {
-          id: Math.random(),
-          imagem: "",
-          nome: "Pedreiro",
-          preco: 15
-        },
-        {
-          id: Math.random(),
-          imagem: "",
-          nome: "Prestador",
-          preco: 45
-        },
-      
-      
-      ],
+      listaDePrestadores: [],
       order: 1,
       qntDePrestadores: 0,
       inputValorMaximo: "",
@@ -34,57 +15,39 @@ export default class FiltrosLista extends React.Component {
     }
 
     componentDidMount(){
-        this.filtroPrestadores()
+        this.filtrarPrestadores()
+        console.log(this.filtrarPrestadores)
+        
+        
 
     }
 
-    getAllPrestadores = (id) => {
-        const url = `https://labeninjas.herokuapp.com/jobs/:${id}`
+    filtrarPrestadores = (id) => {
+        const url = `https://labeninjas.herokuapp.com/jobs` //${id}
         axios.get(url, {
             headers:{
                 Authorization: "3d475e97-ff99-4efb-af1a-8a21d2ce38dd"
             }
         }) 
         .then((res) => {
-            this.filtroPrestadores()
             console.log(res.data)
-            this.setState({clicou: true})
-            this.setState({nome: res.data.result.title})
+            this.setState({prestadores: res.data.result.title})
+            this.setState({prestadores: res.data.result.description})
+            this.setState({prestadores: res.data.result.price})
+            
         })
-        .then((res) => {
-            this.filtroPrestadores()
-            console.log(res.data)
-            this.setState({clicou: true})
-            this.setState({nome: res.data.result.description})
-        })
-
-
-
-
-
-
-
-
-
-
         .catch ((err) => {
             alert("erro")
         })
     
         
-
-
-
-
-
-
-
-
-
-
     }
+
+   
     
-  
+ 
+
+
     updateOrder = (event) => {
       this.setState({ order: event.target.value })
     }
@@ -104,30 +67,32 @@ export default class FiltrosLista extends React.Component {
     mudarQnt = () => {
       this.setState({})
     }
-  
+    
     render() {
+     console.log ("bananinho")
       return (
-        <DivPai>
-            <ContainerFiltros>
+          
+        <div>
+              
               <h1>Filtros</h1>
-              <Paragrafo> Valor Máximo</Paragrafo>
-              <Input
+              <p> Valor Máximo</p>
+              <input
                 type="number"
                 value={this.state.inputValorMaximo}
                 onChange={this.onChangeMaximo}
                 placeholder="Preço Máximo"
               />
-              <Paragrafo> Valor Mínimo</Paragrafo>
-              <Input
+              <p> Valor Mínimo</p>
+              <input
                 type="Number"
                 value={this.state.inputValorMinimo}
                 onChange={this.onChangeMinimo}
                 placeholder="Preço Mínimo"
               />
-              <Paragrafo> Buscar Prestador</Paragrafo>
+              <p> Buscar Prestador</p>
   
               <div>
-                <Input
+                <input
                   defaultValue=""
                   type="text"
                   onChange={this.onChangePrestador}
@@ -135,11 +100,9 @@ export default class FiltrosLista extends React.Component {
                 />
               </div>
   
-            </ContainerFiltros>
+            
   
-            <ContainerPosts>
-  
-              <DivOrdenacao>
+              <div>
                 <span>
                   <label>
                     Ordenação:
@@ -149,36 +112,31 @@ export default class FiltrosLista extends React.Component {
                     </select>
                   </label>
                 </span>
-              </DivOrdenacao>
+              </div>
   
-              <GradeDePosts>
-                {this.state.listaDePosts.filter(listaDePosts => {
-                  return listaDePosts.nome.toLowerCase().includes(this.state.inputPrestador.toLowerCase())
+              <div>
+                {this.state.listaDePrestadores.filter(listaDePrestadores => {
+                  return listaDePrestadores.nome.toLowerCase().includes(this.state.inputPrestador.toLowerCase())
                 })
   
-                  .filter(listaDePosts => {
-                    return this.state.inputValorMinimo === "" || listaDePosts.preco >= this.state.inputValorMinimo
+                  .filter(listaDePrestadores => {
+                    return this.state.inputValorMinimo === "" || listaDePrestadores.preco >= this.state.inputValorMinimo
                   })
-                  .filter(listaDePosts => {
-                    return this.state.inputValorMaximo === "" || listaDePosts.preco <= this.state.inputValorMaximo
+                  .filter(listaDePrestadores => {
+                    return this.state.inputValorMaximo === "" || listaDePrestadores.preco <= this.state.inputValorMaximo
                   })
                   .sort((primeiroPost, segundoPost) => {
                     return this.state.order * (primeiroPost.preco - segundoPost.preco)
                   })
-                  .map((post) => {
-                    return (
+                  }
+              </div>
   
-                      <Post imagem={post.imagem} nome={post.nome} preco={post.preco} />
-                    )
-                  })}
-              </GradeDePosts>
+           
   
-            </ContainerPosts>
-  
-            <ContainerFiltros>
+            
               
-            </ContainerFiltros>
-        </DivPai>
+           
+        </div>
   
   
   
