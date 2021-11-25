@@ -7,6 +7,7 @@ import {
   InputCadastro,
   ButtonCadastro
 } from './CadastroStyles'
+import Button from '@material-ui/core/Button'
 
 export default class Cadastro extends React.Component {
   constructor(props) {
@@ -143,9 +144,9 @@ export default class Cadastro extends React.Component {
           ></input>
         </InputCadastro>
         <ButtonCadastro>
-          <button type="button" onClick={this.addNinja}>
+          <Button variant="contained" color="primary" onClick={this.addNinja}>
             Cadastrar
-          </button>
+          </Button>
         </ButtonCadastro>
       </TelaCadastro>
     )
