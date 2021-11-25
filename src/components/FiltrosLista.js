@@ -23,14 +23,14 @@ export default class FiltrosLista extends React.Component {
     }
 
     filtrarPrestadores = (id) => {
-        const url = `https://labeninjas.herokuapp.com/jobs/:${id}`
+        const url = `https://labeninjas.herokuapp.com/jobs` //${id}
         axios.get(url, {
             headers:{
                 Authorization: "3d475e97-ff99-4efb-af1a-8a21d2ce38dd"
             }
         }) 
         .then((res) => {
-            console.log(res.data.result.list)
+            console.log(res.data)
             this.setState({prestadores: res.data.result.title})
             this.setState({prestadores: res.data.result.description})
             this.setState({prestadores: res.data.result.price})
@@ -69,7 +69,7 @@ export default class FiltrosLista extends React.Component {
     }
     
     render() {
-     console.log ("bananinha")
+     console.log ("bananinho")
       return (
           
         <div>
