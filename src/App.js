@@ -2,15 +2,15 @@ import React from 'react'
 import { AppContainer } from './styles'
 import Home from './components/Home'
 import Cadastro from './components/Cadastro'
-import FiltrosLista from './components/FiltrosLista'
+// import FiltrosLista from './components/FiltrosLista'
 import DetalhesServico from './components/DetalhesServico'
-import Carrinho from './components/Carrinho'
+// import Carrinho from './components/Carrinho'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      telaAtual: 'Cadastro',
+      telaAtual: '+ Detalhes Serviço',
       Carrinho: []
     }
     this.irHome = this.irHome.bind(this)
@@ -25,8 +25,8 @@ export default class App extends React.Component {
         return <Home irHome={this.irHome} />
       case 'Cadastro':
         return <Cadastro irCadastro={this.irCadastro} />
-      case 'Filtros e lista':
-        return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
+      // case 'Filtros e lista':
+      //   return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
       case '+ Detalhes Serviço':
         return (
           <DetalhesServico
@@ -34,15 +34,15 @@ export default class App extends React.Component {
             irDetalhesServico={this.irDetalhesServico}
           />
         )
-      case 'Carrinho':
-        return (
-          <Carrinho
-            selectedId={this.state.idFicha}
-            irCarrinho={this.irCarrinho}
-          />
-        )
-      default:
-        return <Home irHome={this.irHome} />
+      // case 'Carrinho':
+      //   return (
+      //     <Carrinho
+      //       selectedId={this.state.idFicha}
+      //       irCarrinho={this.irCarrinho}
+      //     />
+      //   )
+      // default:
+      //   return <Home irHome={this.irHome} />
     }
   }
 
