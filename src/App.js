@@ -1,13 +1,10 @@
 import React from 'react'
-// import { CardCarrinho } from './components/CardCarrinho'
-// import { AppContainer } from './styles'
-// import Home from './components/Home'
-// import Cadastro from './components/Cadastro'
-// // import FiltrosLista from './components/FiltrosLista'
-// // import DetalhesServico from './components/DetalhesServico'
-// import Carrinho from './components/Carrinho'
-import InteractiveList from './components/CardCarrinho'
-
+import { AppContainer } from './styles'
+import Home from './components/Home'
+import Cadastro from './components/Cadastro'
+import FiltrosLista from './components/FiltrosLista'
+import DetalhesServico from './components/DetalhesServico'
+import Carrinho from './components/Carrinho'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -25,59 +22,64 @@ export default class App extends React.Component {
   escolheTela = () => {
     switch (this.state.telaAtual) {
       case 'Home':
-        return <Home irHome={this.irHome} />
+        return (
+          <Home
+            irParaCadastro={this.irCadastro}
+            irFiltrosLista={this.irFiltrosLista}
+            irCarrinho={this.irCarrinho}
+          />
+        )
       case 'Cadastro':
-        return <Cadastro irCadastro={this.irCadastro} />
-      // case 'Filtros e lista':
-      //   return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
-      // case '+ Detalhes Serviço':
-      //   return (
-      //     <DetalhesServico
-      //       selectedId={this.state.idFicha}
-      //       irDetalhesServico={this.irDetalhesServico}
-      //     />
-      //   )
-      // case 'Carrinho':
-      //   return (
-
-      //     <Carrinho
-      //       selectedId={this.state.idFicha}
-      //       irCarrinho={this.irCarrinho}
-      //     />
-      //   )
+        return <Cadastro irHome={this.irHome} />
+      case 'Filtros e lista':
+        return (
+          <FiltrosLista
+            irHome={this.irHome}
+            irCarrinho={this.irCarrinho}
+            irDetalhesServico={this.irDetalhesServico}
+          />
+        )
+      case '+ Detalhes Serviço':
+        return (
+          <DetalhesServico
+            selectedId={this.state.idFicha}
+            irHome={this.irHome}
+            irCarrinho={this.irCarrinho}
+          />
+        )
+      case 'Carrinho':
+        return (
+          <Carrinho
+            selectedId={this.state.idFicha}
+            irHome={this.irHome}
+            irFiltrosLista={this.irFiltrosLista}
+          />
+        )
       default:
         return <Home irHome={this.irHome} />
     }
   }
 
-  // irHome = () => {
-  //   this.setState({ telaAtual: 'Home' })
-  // }
+  irHome = () => {
+    this.setState({ telaAtual: 'Home' })
+  }
 
-  // irCadastro = () => {
-  //   this.setState({ telaAtual: 'Cadastro' })
-  // }
+  irCadastro = () => {
+    this.setState({ telaAtual: 'Cadastro' })
+  }
 
-  // irFiltrosLista = () => {
-  //   this.setState({ telaAtual: 'Filtros e lista' })
-  // }
+  irFiltrosLista = () => {
+    this.setState({ telaAtual: 'Filtros e lista' })
+  }
 
-  // irDetalhesServico = id => {
-  //   this.setState({ telaAtual: '+ Detalhes Serviço', idFicha: id })
-  // }
+  irDetalhesServico = id => {
+    this.setState({ telaAtual: '+ Detalhes Serviço', idFicha: id })
+  }
 
-  // irCarrinho = id => {
-  //   this.setState({ telaAtual: 'Carrinho', idFicha: id })
-  // }
+  irCarrinho = id => {
+    this.setState({ telaAtual: 'Carrinho', idFicha: id })
+  }
   render() {
-    return (
-      <div>
-        <InteractiveList />
-      </div>
-      // // <AppContainer>
-      //   {/* {this.escolheTela()} */}
-
-      // {/* </AppContainer> */}
-    )
+    return <AppContainer>{this.escolheTela()} </AppContainer>
   }
 }

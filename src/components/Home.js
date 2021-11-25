@@ -28,7 +28,7 @@ export default class Home extends React.Component {
             <IconButton
               edge="end"
               aria-label="delete"
-              onClick={this.props.irParaCarrinho}
+              onClick={this.props.irCarrinho}
             >
               <WorkIcon />
             </IconButton>
@@ -43,14 +43,14 @@ export default class Home extends React.Component {
             <Button
               variant="contained"
               color="primary"
-              onClick={this.props.irParaCadastro}
+              onClick={this.props.irCadastro}
             >
               Quero ser um ninja
             </Button>
             <Button
               variant="contained"
               color="primary"
-              onClick={this.props.irParaBuscador}
+              onClick={this.props.irFiltrosLista}
             >
               Contratar um Ninja
             </Button>
