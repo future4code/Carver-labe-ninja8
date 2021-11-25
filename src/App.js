@@ -6,7 +6,7 @@ import React from 'react'
 // // import FiltrosLista from './components/FiltrosLista'
 // // import DetalhesServico from './components/DetalhesServico'
 // import Carrinho from './components/Carrinho'
-import SimpleCard from './components/CardBusca'
+import InteractiveList from './components/CardCarrinho'
 
 export default class App extends React.Component {
   // constructor(props) {
@@ -70,7 +70,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <SimpleCard />
+        <InteractiveList />
       </div>
       // // <AppContainer>
       //   {/* {this.escolheTela()} */}
