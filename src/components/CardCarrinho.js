@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class CardCarrinho extends Component {
+export default class CardCarrinho extends React.Component {
   render() {
     return (
       <div>
