@@ -85,13 +85,16 @@ export const ButtonCadastro = styled.div`
     color: white;
     background-color: #7869bf;
     border-radius: 4px;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
-      0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+
     font-size: 1rem;
     font-family: sans-serif;
     line-height: 1.4rem;
     width: 70vw;
     max-width: 400px;
     box-sizing: border-box;
+    &:hover {
+      color: white;
+      background-color: #9281e3;
+    }
   }
 `

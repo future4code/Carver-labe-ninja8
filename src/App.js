@@ -2,8 +2,8 @@ import React from 'react'
 import { AppContainer } from './styles'
 import Home from './components/Home'
 import Cadastro from './components/Cadastro'
-import FiltrosLista from './components/FiltrosLista'
-import DetalhesServico from './components/DetalhesServico'
+// import FiltrosLista from './components/FiltrosLista'
+// import DetalhesServico from './components/DetalhesServico'
 import Carrinho from './components/Carrinho'
 
 export default class App extends React.Component {
@@ -25,15 +25,15 @@ export default class App extends React.Component {
         return <Home irHome={this.irHome} />
       case 'Cadastro':
         return <Cadastro irCadastro={this.irCadastro} />
-      case 'Filtros e lista':
-        return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
-      case '+ Detalhes Serviço':
-        return (
-          <DetalhesServico
-            selectedId={this.state.idFicha}
-            irDetalhesServico={this.irDetalhesServico}
-          />
-        )
+      // case 'Filtros e lista':
+      //   return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
+      // case '+ Detalhes Serviço':
+      //   return (
+      //     <DetalhesServico
+      //       selectedId={this.state.idFicha}
+      //       irDetalhesServico={this.irDetalhesServico}
+      //     />
+      //   )
       case 'Carrinho':
         return (
           
