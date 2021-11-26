@@ -6,13 +6,17 @@ import FiltrosLista from './components/FiltrosLista'
 import DetalhesServico from './components/DetalhesServico'
 import Carrinho from './components/Carrinho'
 
+
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+
       telaAtual: 'Home',
+
       Carrinho: []
     }
+
     this.irHome = this.irHome.bind(this)
     this.irCadastro = this.irCadastro.bind(this)
     this.irFiltrosLista = this.irFiltrosLista.bind(this)
@@ -30,6 +34,7 @@ export default class App extends React.Component {
           />
         )
       case 'Cadastro':
+
         return <Cadastro irHome={this.irHome} />
       case 'Filtros e lista':
         return (
@@ -39,6 +44,7 @@ export default class App extends React.Component {
             irDetalhesServico={this.irDetalhesServico}
           />
         )
+
       case '+ Detalhes Serviço':
         return (
           <DetalhesServico
@@ -80,6 +86,8 @@ export default class App extends React.Component {
     this.setState({ telaAtual: 'Carrinho', idFicha: id })
   }
   render() {
+
     return <AppContainer>{this.escolheTela()} </AppContainer>
+
   }
 }
