@@ -49,7 +49,7 @@ export default class FiltrosLista extends React.Component {
     const novaLista = this.state.listaDePrestadores
       .filter(element => element.title === this.state.inputPrestador)
       .filter(element => element.price > this.state.inputValorMinimo)
-      .filter(element => element.price < this.state.inputValorMaximoo)
+      .filter(element => element.price < this.state.inputValorMaximo)
     this.setState({ listaFiltrada: novaLista })
     console.log(this.state.listaDePrestadores, 'nova lista')
   }
@@ -88,6 +88,8 @@ export default class FiltrosLista extends React.Component {
         />
       )
     })
+
+    console.log(this.state.listaDePrestadores, 'nova lista')
     return (
       <TelaFiltro>
         <HeaderApp>
@@ -144,6 +146,7 @@ export default class FiltrosLista extends React.Component {
               <option value={-1}>Decrescente</option>
             </select>
           </div>
+          <button onClick={this.filtrosDeBusca}>Buscar</button>
         </InputsFiltro>
 
         <GridCards>{mostrarLista}</GridCards>
