@@ -5,13 +5,11 @@ export default class TelaListaPrestadores extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-        card: {this.props.state
-        id: '',
-        title: 'Nome prestador',
-        description: 'Serviço prestador em detalhes da descrição.',
-        price: '2.000 converter em number',
-        dueDate: '22/12/21'
-      }
+      id: '',
+      title: 'Nome prestador',
+      description: 'Serviço prestador em detalhes da descrição.',
+      price: '2.000 converter em number',
+      dueDate: '22/12/21'
     }
   }
 

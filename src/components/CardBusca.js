@@ -94,8 +94,9 @@ export default class SimpleCard extends React.Component {
               <Cor2>
                 <Button
                   variant="contained"
-                  // onClick={onClick={(item) => this.props.handleCardDetalhes(item)}
+                  onClick={() => this.props.addCarrinho(this.props.key)}
                 >
+                  {/* Rodrigo addCarrinho é .props pq está no app veja como fazer funcionar lá */}
                   Contratar
                 </Button>
               </Cor2>

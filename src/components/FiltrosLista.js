@@ -3,11 +3,13 @@ import axios from 'axios'
 import CardItem from './CardBusca'
 import {
   HeaderApp,
+  ButtonHeader,
   TelaFiltro,
-  InputsFiltro
-  // ButtonFiltro
+  InputsFiltro,
+  GridCards
 } from './FiltrosStyles'
-import Button from '@material-ui/core/Button'
+import WorkIcon from '@material-ui/icons/Work'
+import IconButton from '@material-ui/core/IconButton'
 
 export default class FiltrosLista extends React.Component {
   state = {
@@ -76,16 +78,14 @@ export default class FiltrosLista extends React.Component {
   render() {
     const mostrarLista = this.state.listaDePrestadores.map(item => {
       return (
-        <CardItem key={item.id}>
-          {item.id}
-          {item.title}
-          {item.description}
-          {item.price}
-          {item.paymentMethods}
-          {item.dueDate}
-          <button onClick={() => this.detalhesCard(item)} />
-          <button onClick={() => this.props.addCarrinho(item)} />
-        </CardItem>
+        <CardItem
+          key={item.id}
+          title={item.title}
+          description={item.description}
+          price={item.price}
+          paymentMethods={item.paymentMethods}
+          dueDate={item.dueDate}
+        />
       )
     })
     return (
@@ -100,58 +100,53 @@ export default class FiltrosLista extends React.Component {
 
           <p>O talento certo, no momento certo.</p>
 
-          <a href="Home" onClick={this.props.irHome}>
-            <img
-              src="https://i.postimg.cc/SRK1BdXM/Design-sem-nome-3.png"
-              alt="Escrito LabeNinjas."
-            />
-          </a>
+          <ButtonHeader>
+            <IconButton
+              edge="end"
+              aria-label="delete"
+              onClick={this.props.irCarrinho}
+            >
+              <WorkIcon />
+            </IconButton>
+          </ButtonHeader>
         </HeaderApp>
         <InputsFiltro>
-          <h1>Filtros</h1>
-          <p>Valor Máximo:</p>
           <input
             type="Number"
             value={this.state.inputValorMaximo}
             onChange={this.onChangeMaximo}
-            placeholder="Preço Máximo"
+            placeholder="Valor máximo"
           />
-          <p>Valor Mínimo:</p>
+
           <input
             type="Number"
             value={this.state.inputValorMinimo}
             onChange={this.onChangeMinimo}
-            placeholder="Preço Mínimo"
+            placeholder="Valor mínimo"
           />
-          <p>Buscar Prestador:</p>
 
           <div>
             <input
               type="text"
-              placeholder="Nome do Prestador"
+              placeholder="Buscar por serviço"
               onChange={this.onChangePrestador}
               value={this.state.inputPrestador}
             />
           </div>
 
           <div>
-            <span>
-              <label>
-                Ordenação:
-                <select
-                  name="order"
-                  value={this.state.order}
-                  onChange={this.updateOrder}
-                >
-                  <option value={1}>Crescente</option>
-                  <option value={-1}>Decrescente</option>
-                </select>
-              </label>
-            </span>
+            <select
+              name="order"
+              value={this.state.order}
+              onChange={this.updateOrder}
+            >
+              <option value={1}>Crescente</option>
+              <option value={-1}>Decrescente</option>
+            </select>
           </div>
         </InputsFiltro>
 
-        <div>{mostrarLista}</div>
+        <GridCards>{mostrarLista}</GridCards>
 
         {/* <div>
           {this.state.listaDePrestadores

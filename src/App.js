@@ -17,7 +17,7 @@ export default class App extends React.Component {
       price: '',
       paymentMethods: [],
       dueDate: '',
-      Carrinho: []
+      carrinho: []
     }
 
     this.irHome = this.irHome.bind(this)
@@ -61,7 +61,7 @@ export default class App extends React.Component {
       case 'Carrinho':
         return (
           <Carrinho
-            selectedId={this.state.idFicha}
+            selectedId={this.state.carrinho}
             irHome={this.irHome}
             irFiltrosLista={this.irFiltrosLista}
           />
@@ -88,7 +88,13 @@ export default class App extends React.Component {
   }
 
   irCarrinho = id => {
-    this.setState({ telaAtual: 'Carrinho', idFicha: id })
+    this.setState({ telaAtual: 'Carrinho', id: this.state.carrinho })
+  }
+
+  addCarrinho = id => {
+    const novoCarrinho = this.state.carrinho.push(id)
+    this.setState({ carrinho: novoCarrinho })
+    console.log(novoCarrinho, 'adcionou ao carrinho?')
   }
 
   handleCardDetalhes = item => {

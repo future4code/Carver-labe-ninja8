@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 export const TelaFiltro = styled.div`
-  max-height: 100vh;
   min-height: 100vh;
   max-width: 100vw;
   min-width: 100vw;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,19 +40,32 @@ export const HeaderApp = styled.div`
     text-align: center;
   }
 `
+export const ButtonHeader = styled.div`
+  margin-right: 3vw;
+`
 
 export const InputsFiltro = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   pointer-events: text;
   background-color: #f5f4fd;
+  font-size: 16px;
+  font-family: sans-serif;
+  letter-spacing: 2px;
+  color: #7869bf;
 
   input,
   select {
     color: #7869bf;
-    width: 70vw;
+    height: 4vh;
+    width: 20vw;
     max-width: 400px;
-    display: flex;
     background-color: white;
     margin-top: 16px;
     margin-bottom: 8px;
@@ -66,22 +79,9 @@ export const InputsFiltro = styled.div`
     line-height: 1.4rem;
   }
 `
-export const ButtonFiltro = styled.div`
-  button {
-    margin-top: 16px;
-    color: white;
-    background-color: #7869bf;
-    border-radius: 4px;
 
-    font-size: 1rem;
-    font-family: sans-serif;
-    line-height: 1.4rem;
-    width: 70vw;
-    max-width: 400px;
-    box-sizing: border-box;
-    &:hover {
-      color: white;
-      background-color: #9281e3;
-    }
-  }
+export const GridCards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 30px;
 `
