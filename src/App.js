@@ -1,18 +1,19 @@
 import React from 'react'
-import { CardCarrinho } from './components/CardCarrinho'
 import { AppContainer } from './styles'
 import Home from './components/Home'
 import Cadastro from './components/Cadastro'
 import FiltrosLista from './components/FiltrosLista'
 import DetalhesServico from './components/DetalhesServico'
 import Carrinho from './components/Carrinho'
-import InteractiveList from './components/CardCarrinho'
+
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      telaAtual: 'Filtros e lista',
+
+      telaAtual: 'Home',
+
       Carrinho: []
     }
 
@@ -25,24 +26,39 @@ export default class App extends React.Component {
   escolheTela = () => {
     switch (this.state.telaAtual) {
       case 'Home':
-        return <Home irHome={this.irHome} />
+        return (
+          <Home
+            irParaCadastro={this.irCadastro}
+            irFiltrosLista={this.irFiltrosLista}
+            irCarrinho={this.irCarrinho}
+          />
+        )
       case 'Cadastro':
-        return <Cadastro irCadastro={this.irCadastro} />
+
+        return <Cadastro irHome={this.irHome} />
       case 'Filtros e lista':
-        return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
+        return (
+          <FiltrosLista
+            irHome={this.irHome}
+            irCarrinho={this.irCarrinho}
+            irDetalhesServico={this.irDetalhesServico}
+          />
+        )
+
       case '+ Detalhes Serviço':
         return (
           <DetalhesServico
             selectedId={this.state.idFicha}
-            irDetalhesServico={this.irDetalhesServico}
+            irHome={this.irHome}
+            irCarrinho={this.irCarrinho}
           />
         )
       case 'Carrinho':
         return (
-          
           <Carrinho
             selectedId={this.state.idFicha}
-            irCarrinho={this.irCarrinho}
+            irHome={this.irHome}
+            irFiltrosLista={this.irFiltrosLista}
           />
         )
       default:
@@ -70,13 +86,8 @@ export default class App extends React.Component {
     this.setState({ telaAtual: 'Carrinho', idFicha: id })
   }
   render() {
-    return (
-      <div>
-        <InteractiveList />
-        {this.escolheTela()}
-      </div>
-      
-      
-    )
+
+    return <AppContainer>{this.escolheTela()} </AppContainer>
+
   }
 }

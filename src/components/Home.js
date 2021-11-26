@@ -1,50 +1,62 @@
 import React from 'react'
-import styled from 'styled-components'
-
-const Header = styled.div`
-  margin: 0px;
-  padding: 10px 4px;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  background-color: pink;
-`
-const Botao = styled.button`
-  background-color: pink;
-  border: none;
-  font-size: 16px;
-`
-const Centro = styled.div`
-  text-align: center;
-  margin-top: 100px;
-`
+import {
+  TelaHome,
+  Headerapp,
+  ButtonHeader,
+  Body,
+  ButtonLayout
+} from './Homestyles'
+import WorkIcon from '@material-ui/icons/Work'
+import IconButton from '@material-ui/core/IconButton'
+import Button from '@material-ui/core/Button'
 
 export default class Home extends React.Component {
   render() {
     return (
-      <div>
-        <Header>
-          <h2>LabeNinjas</h2>
-          <Botao>
-            <button alt="Home" onClick={this.props.irParaHome}>
-              Home
-            </button>
-            <button alt="Carrinho" onClick={this.props.irParaCarrinho}>
-              Carrinho
-            </button>
-          </Botao>
-        </Header>
-        <Centro>
-          <h1>LabeNinjas</h1>
-          <h4>O talento certo no momento certo</h4>
-          <button onClick={this.props.irParaCadastro}>
-            Quero ser um ninja
-          </button>
-          <button onClick={this.props.irParaBuscador}>
-            Contratar um Ninja
-          </button>
-        </Centro>
-      </div>
+      <TelaHome>
+        <Headerapp>
+          <a href="Home" onClick={this.props.irHome}>
+            <img
+              src="https://i.postimg.cc/VsX1fLHZ/Design-sem-nome.png"
+              alt="Logo de um ninja."
+            />
+          </a>
+
+          <p>O talento certo, no momento certo.</p>
+
+          <ButtonHeader>
+            <IconButton
+              edge="end"
+              aria-label="delete"
+              onClick={this.props.irCarrinho}
+            >
+              <WorkIcon />
+            </IconButton>
+          </ButtonHeader>
+        </Headerapp>
+        <Body>
+          <img
+            src="https://i.postimg.cc/YC8JDN1K/labeninjas2-removebg-preview.png"
+            alt="Logo Labeninjas."
+          />
+          <ButtonLayout>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.props.irCadastro}
+            >
+              Quero ser um ninja
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.props.irFiltrosLista}
+            >
+              Contratar um Ninja
+            </Button>
+          </ButtonLayout>
+        </Body>
+      </TelaHome>
     )
   }
 }
