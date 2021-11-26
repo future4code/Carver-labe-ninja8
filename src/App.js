@@ -6,14 +6,17 @@ import FiltrosLista from './components/FiltrosLista'
 import DetalhesServico from './components/DetalhesServico'
 import Carrinho from './components/Carrinho'
 
-
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
-      telaAtual: 'Home',
-
+      telaAtual: 'Filtros e lista',
+      id: '',
+      title: '',
+      description: '',
+      price: '',
+      paymentMethods: [],
+      dueDate: '',
       Carrinho: []
     }
 
@@ -22,6 +25,7 @@ export default class App extends React.Component {
     this.irFiltrosLista = this.irFiltrosLista.bind(this)
     this.irDetalhesServico = this.irDetalhesServico.bind(this)
     this.irCarrinho = this.irCarrinho.bind(this)
+    this.handleCardDetalhes = this.handleCardDetalhes.bind(this)
   }
   escolheTela = () => {
     switch (this.state.telaAtual) {
@@ -34,7 +38,6 @@ export default class App extends React.Component {
           />
         )
       case 'Cadastro':
-
         return <Cadastro irHome={this.irHome} />
       case 'Filtros e lista':
         return (
@@ -42,6 +45,7 @@ export default class App extends React.Component {
             irHome={this.irHome}
             irCarrinho={this.irCarrinho}
             irDetalhesServico={this.irDetalhesServico}
+            handleCardDetalhes={this.handleCardDetalhes}
           />
         )
 
@@ -51,6 +55,7 @@ export default class App extends React.Component {
             selectedId={this.state.idFicha}
             irHome={this.irHome}
             irCarrinho={this.irCarrinho}
+            handleCardDetalhes={this.handleCardDetalhes}
           />
         )
       case 'Carrinho':
@@ -85,9 +90,20 @@ export default class App extends React.Component {
   irCarrinho = id => {
     this.setState({ telaAtual: 'Carrinho', idFicha: id })
   }
+
+  handleCardDetalhes = item => {
+    const precoModificado = Number(item.price)
+    this.setState({
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      price: precoModificado,
+      paymentMethods: [item.paymentMethods],
+      dueDate: item.dueDate
+    })
+  }
+
   render() {
-
     return <AppContainer>{this.escolheTela()} </AppContainer>
-
   }
 }
