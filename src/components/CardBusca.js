@@ -11,7 +11,7 @@ export default class SimpleCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      // jobs: [],
+      jobs: [],
       card: {
         id: '',
         title: 'Nome prestador',
@@ -20,45 +20,45 @@ export default class SimpleCard extends React.Component {
         dueDate: '22/12/21'
       }
     }
-    // this.handleId = this.handleId.bind(this)
-    // this.handleTitulo = this.handleTitulo.bind(this)
-    // this.handleDescricao = this.handleDescricao.bind(this)
-    // this.handlePrice = this.handlePrice.bind(this)
-    // this.handlePrazo = this.handlePrazo.bind(this)
+    this.handleId = this.handleId.bind(this)
+    this.handleTitulo = this.handleTitulo.bind(this)
+    this.handleDescricao = this.handleDescricao.bind(this)
+    this.handlePrice = this.handlePrice.bind(this)
+    this.handlePrazo = this.handlePrazo.bind(this)
   }
 
-  // componentDidMount() {
-  //   this.listaCardsAtual()
-  // }
+  componentDidMount() {
+    this.listaCardsAtual()
+  }
 
-  // handleId = e => {
-  //   this.setState({
-  //     card: { id: e.target.value }
-  //   })
-  // }
+  handleId = e => {
+    this.setState({
+      card: { id: e.target.value }
+    })
+  }
 
-  // handleTitulo = e => {
-  //   this.setState({
-  //     card: { title: e.target.value }
-  //   })
-  // }
+  handleTitulo = e => {
+    this.setState({
+      card: { title: e.target.value }
+    })
+  }
 
-  // listaCardsAtual = () => {
-  //   const url = `https://labeninjas.herokuapp.com/jobs`
+  listaCardsAtual = () => {
+    const url = `https://labeninjas.herokuapp.com/jobs`
 
-  //   axios
-  //     .get(url, {
-  //       headers: {
-  //         Authorization: '3d475e97-ff99-4efb-af1a-8a21d2ce38dd'
-  //       }
-  //     })
-  //     .then(res => {
-  //       this.setState({ jobs: res.data.result.list })
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
+    axios
+      .get(url, {
+        headers: {
+          Authorization: '3d475e97-ff99-4efb-af1a-8a21d2ce38dd'
+        }
+      })
+      .then(res => {
+        this.setState({ jobs: res.data.result.list })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
   render() {
     return (
