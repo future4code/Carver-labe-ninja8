@@ -2,24 +2,24 @@ import React from 'react'
 import { AppContainer } from './styles'
 import Home from './components/Home'
 import Cadastro from './components/Cadastro'
-import FiltrosLista from './components/FiltrosLista'
+// import FiltrosLista from './components/FiltrosLista'
 import DetalhesServico from './components/DetalhesServico'
-import Carrinho from './components/Carrinho'
+// import Carrinho from './components/Carrinho'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      telaAtual: 'Home',
+      telaAtual: '+ Detalhes Serviço',
       Carrinho: []
     }
     this.irHome = this.irHome.bind(this)
     this.irCadastro = this.irCadastro.bind(this)
-    this.irFiltrosLista = this.irFiltrosLista.bind(this)
+    // this.irFiltrosLista = this.irFiltrosLista.bind(this)
     this.irDetalhesServico = this.irDetalhesServico.bind(this)
-    this.irCarrinho = this.irCarrinho.bind(this)
+    // this.irCarrinho = this.irCarrinho.bind(this)
   }
-  escolheTela = () => {
+    escolheTela = () => {
     switch (this.state.telaAtual) {
       case 'Home':
         return (
@@ -31,14 +31,14 @@ export default class App extends React.Component {
         )
       case 'Cadastro':
         return <Cadastro irHome={this.irHome} />
-      case 'Filtros e lista':
-        return (
-          <FiltrosLista
-            irHome={this.irHome}
-            irCarrinho={this.irCarrinho}
-            irDetalhesServico={this.irDetalhesServico}
-          />
-        )
+      // case 'Filtros e lista':
+        // return (
+        //   <FiltrosLista
+        //     irHome={this.irHome}
+        //     irCarrinho={this.irCarrinho}
+        //     irDetalhesServico={this.irDetalhesServico}
+        //   />
+        // )
       case '+ Detalhes Serviço':
         return (
           <DetalhesServico
@@ -47,14 +47,14 @@ export default class App extends React.Component {
             irCarrinho={this.irCarrinho}
           />
         )
-      case 'Carrinho':
-        return (
-          <Carrinho
-            selectedId={this.state.idFicha}
-            irHome={this.irHome}
-            irFiltrosLista={this.irFiltrosLista}
-          />
-        )
+      // case 'Carrinho':
+      //   return (
+      //     <Carrinho
+      //       selectedId={this.state.idFicha}
+      //       irHome={this.irHome}
+      //       irFiltrosLista={this.irFiltrosLista}
+      //     />
+      //   )
       default:
         return <Home irHome={this.irHome} />
     }

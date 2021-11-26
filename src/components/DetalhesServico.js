@@ -1,9 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 
-export default class TelaListaPrestadores extends React.Component {
+export default class DetalhesServico extends React.Component {
   state = {
-    prestadores: []
+    prestadores:  []
+  }
+
+  componentDidMount = () => {
+    this.pegarJobs()
   }
 
   pegarJobs = () => {
@@ -14,16 +18,16 @@ export default class TelaListaPrestadores extends React.Component {
           Authorization: '3d475e97-ff99-4efb-af1a-8a21d2ce38dd'
         }
       })
-      .then(res => {
-        console.log(res.data)
+      .then((res) => {
+        console.log("pegar jobs", res.data)
         this.setState({ prestadores: res.data })
       })
-      .catch(err => {
-        alert('ocorreu um problema, tente novamente')
+      .catch((err) => {
+        alert('ocorreu um erro')
       })
   }
 
-  infoJob = id => {
+  infoJob = (id) => {
     const url = `https://labeninjas.herokuapp.com/jobs/:${id}`
     axios
       .get(url, {
@@ -31,25 +35,25 @@ export default class TelaListaPrestadores extends React.Component {
           Authorization: '3d475e97-ff99-4efb-af1a-8a21d2ce38dd'
         }
       })
-      .then(res => {
+      .then((res) => {
         console.log(res.data)
         console.log(res.data.title)
         console.log(res.data.description)
       })
-      .catch(err => {
+      .catch((err) => {
         alert('erro')
+        console.log(err)
       })
   }
 
   render() {
     console.log(this.state.prestadores)
-    const listaJobs = this.state.prestadores.map(x => {
-      return (
-        <div key={x.id}>
-          {x.name}
+    const listaJobs = this.state.prestadores.map((x) => {
+      return <div key={x.id}>
+          {x.title}
           <button onClick={() => this.infoJob(x.id)}>Mais informações</button>
-        </div>
-      )
+          </div>
+      
     })
 
     return (
