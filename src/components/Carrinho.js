@@ -3,7 +3,7 @@ import Axios from 'axios'
 
 
 
-export class CardCarrinho extends Component {
+export class Carrinho extends Component {
     state = {
         carrinho: []
     }
