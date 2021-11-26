@@ -1,20 +1,21 @@
 import React from 'react'
-// import { CardCarrinho } from './components/CardCarrinho'
-// import { AppContainer } from './styles'
-// import Home from './components/Home'
-// import Cadastro from './components/Cadastro'
-// // import FiltrosLista from './components/FiltrosLista'
-// // import DetalhesServico from './components/DetalhesServico'
-// import Carrinho from './components/Carrinho'
+import { CardCarrinho } from './components/CardCarrinho'
+import { AppContainer } from './styles'
+import Home from './components/Home'
+import Cadastro from './components/Cadastro'
+import FiltrosLista from './components/FiltrosLista'
+import DetalhesServico from './components/DetalhesServico'
+import Carrinho from './components/Carrinho'
 import InteractiveList from './components/CardCarrinho'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      telaAtual: 'Cadastro',
+      telaAtual: 'Filtros e lista',
       Carrinho: []
     }
+
     this.irHome = this.irHome.bind(this)
     this.irCadastro = this.irCadastro.bind(this)
     this.irFiltrosLista = this.irFiltrosLista.bind(this)
@@ -27,15 +28,15 @@ export default class App extends React.Component {
         return <Home irHome={this.irHome} />
       case 'Cadastro':
         return <Cadastro irCadastro={this.irCadastro} />
-      // case 'Filtros e lista':
-      //   return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
-      // case '+ Detalhes Serviço':
-      //   return (
-      //     <DetalhesServico
-      //       selectedId={this.state.idFicha}
-      //       irDetalhesServico={this.irDetalhesServico}
-      //     />
-      //   )
+      case 'Filtros e lista':
+        return <FiltrosLista irFiltrosLista={this.irFiltrosLista} />
+      case '+ Detalhes Serviço':
+        return (
+          <DetalhesServico
+            selectedId={this.state.idFicha}
+            irDetalhesServico={this.irDetalhesServico}
+          />
+        )
       case 'Carrinho':
         return (
           
@@ -49,34 +50,33 @@ export default class App extends React.Component {
     }
   }
 
-  // irHome = () => {
-  //   this.setState({ telaAtual: 'Home' })
-  // }
+  irHome = () => {
+    this.setState({ telaAtual: 'Home' })
+  }
 
-  // irCadastro = () => {
-  //   this.setState({ telaAtual: 'Cadastro' })
-  // }
+  irCadastro = () => {
+    this.setState({ telaAtual: 'Cadastro' })
+  }
 
-  // irFiltrosLista = () => {
-  //   this.setState({ telaAtual: 'Filtros e lista' })
-  // }
+  irFiltrosLista = () => {
+    this.setState({ telaAtual: 'Filtros e lista' })
+  }
 
-  // irDetalhesServico = id => {
-  //   this.setState({ telaAtual: '+ Detalhes Serviço', idFicha: id })
-  // }
+  irDetalhesServico = id => {
+    this.setState({ telaAtual: '+ Detalhes Serviço', idFicha: id })
+  }
 
-  // irCarrinho = id => {
-  //   this.setState({ telaAtual: 'Carrinho', idFicha: id })
-  // }
+  irCarrinho = id => {
+    this.setState({ telaAtual: 'Carrinho', idFicha: id })
+  }
   render() {
     return (
       <div>
         <InteractiveList />
+        {this.escolheTela()}
       </div>
-      // // <AppContainer>
-      //   {/* {this.escolheTela()} */}
-
-      // {/* </AppContainer> */}
+      
+      
     )
   }
 }
