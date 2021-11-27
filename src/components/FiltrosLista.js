@@ -14,7 +14,6 @@ import IconButton from '@material-ui/core/IconButton'
 export default class FiltrosLista extends React.Component {
   state = {
     listaDePrestadores: [],
-    listaFiltrada: [],
     order: 1,
     qntDePrestadores: 0,
     inputValorMaximo: '',
@@ -31,27 +30,17 @@ export default class FiltrosLista extends React.Component {
   }
 
   onChangeMaximo = event => {
-    this.setState({ inputValorMaximo: event.target.value })
-    console.log(this.state.inputValorMaximo, 'valor maximo')
+    const precoModificado = Number(event.target.value)
+    this.setState({ inputValorMaximo: precoModificado })
   }
 
   onChangeMinimo = event => {
-    this.setState({ inputValorMinimo: event.target.value })
-    console.log(this.state.inputValorMinimo, 'valor minimo')
+    const precoModificado = Number(event.target.value)
+    this.setState({ inputValorMinimo: precoModificado })
   }
 
   onChangePrestador = event => {
     this.setState({ inputPrestador: event.target.value })
-    console.log(this.state.inputPrestador, 'nome buscado')
-  }
-
-  filtrosDeBusca = () => {
-    const novaLista = this.state.listaDePrestadores
-      .filter(element => element.title === this.state.inputPrestador)
-      .filter(element => element.price > this.state.inputValorMinimo)
-      .filter(element => element.price < this.state.inputValorMaximo)
-    this.setState({ listaFiltrada: novaLista })
-    console.log(this.state.listaDePrestadores, 'nova lista')
   }
 
   mudarQnt = () => {
@@ -67,7 +56,6 @@ export default class FiltrosLista extends React.Component {
         }
       })
       .then(resposta => {
-        console.log(resposta)
         this.setState({ listaDePrestadores: resposta.data.jobs })
       })
       .catch(erro => {
@@ -76,7 +64,28 @@ export default class FiltrosLista extends React.Component {
   }
 
   render() {
-    const mostrarLista = this.state.listaDePrestadores.map(item => {
+    let listaNova = [...this.state.listaDePrestadores]
+
+    if (this.state.inputPrestador !== '') {
+      listaNova = listaNova.filter(element => {
+        const search = new RegExp(this.state.inputPrestador, 'i')
+        return element.title.match(search)
+      })
+    }
+
+    if (this.state.inputValorMinimo !== '') {
+      listaNova = listaNova.filter(
+        element => element.price > this.state.inputValorMinimo
+      )
+    }
+
+    if (this.state.inputValorMaximo !== '') {
+      listaNova = listaNova.filter(
+        element => element.price < this.state.inputValorMaximo
+      )
+    }
+
+    const mostrarLista = listaNova.map(item => {
       return (
         <CardItem
           key={item.id}
@@ -89,7 +98,6 @@ export default class FiltrosLista extends React.Component {
       )
     })
 
-    console.log(this.state.listaDePrestadores, 'nova lista')
     return (
       <TelaFiltro>
         <HeaderApp>
@@ -146,35 +154,9 @@ export default class FiltrosLista extends React.Component {
               <option value={-1}>Decrescente</option>
             </select>
           </div>
-        
         </InputsFiltro>
 
         <GridCards>{mostrarLista}</GridCards>
-
-        {/* <div>
-          {this.state.listaDePrestadores
-            .filter(listaDePrestadores => {
-              return listaDePrestadores.nome
-                .toLowerCase()
-                .includes(this.state.inputPrestador.toLowerCase())
-            })
-
-            .filter(listaDePrestadores => {
-              return (
-                this.state.inputValorMinimo === '' ||
-                listaDePrestadores.preco >= this.state.inputValorMinimo
-              )
-            })
-            .filter(listaDePrestadores => {
-              return (
-                this.state.inputValorMaximo === '' ||
-                listaDePrestadores.preco <= this.state.inputValorMaximo
-              )
-            })
-            .sort((primeiroPost, segundoPost) => {
-              return this.state.order * (primeiroPost.preco - segundoPost.preco)
-            })}
-        </div> */}
       </TelaFiltro>
     )
   }
