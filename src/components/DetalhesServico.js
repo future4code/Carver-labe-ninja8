@@ -1,70 +1,72 @@
 import React from 'react'
-import axios from 'axios'
+import {
+  TelaDetalhes,
+  Headerapp,
+  ButtonHeader,
+  TituloDetalhes,
+  Body,
+  ButtonDetalhes
+} from './DetalhesServicoStyles'
+import WorkIcon from '@material-ui/icons/Work'
+import IconButton from '@material-ui/core/IconButton'
+import Button from '@material-ui/core/Button'
 
-export default class TelaListaPrestadores extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      id: '',
-      title: 'Nome prestador',
-      description: 'Serviço prestador em detalhes da descrição.',
-      price: '2.000 converter em number',
-      dueDate: '22/12/21'
-    }
-  }
-
-  pegarJobs = () => {
-    const url = `https://labeninjas.herokuapp.com/jobs`
-    axios
-      .get(url, {
-        headers: {
-          Authorization: '3d475e97-ff99-4efb-af1a-8a21d2ce38dd'
-        }
-      })
-      .then(res => {
-        console.log(res.data)
-        this.setState({ prestadores: res.data })
-      })
-      .catch(err => {
-        alert('ocorreu um problema, tente novamente')
-      })
-  }
-
-  infoJob = id => {
-    const url = `https://labeninjas.herokuapp.com/jobs/:${id}`
-    axios
-      .get(url, {
-        headers: {
-          Authorization: '3d475e97-ff99-4efb-af1a-8a21d2ce38dd'
-        }
-      })
-      .then(res => {
-        console.log(res.data)
-        console.log(res.data.title)
-        console.log(res.data.description)
-      })
-      .catch(err => {
-        alert('erro')
-      })
-  }
-
+export default class DetalhesServicos extends React.Component {
   render() {
-    console.log(this.state.prestadores)
-    const listaJobs = this.state.prestadores.map(x => {
-      return (
-        <div key={x.id}>
-          {x.name}
-          <button onClick={() => this.infoJob(x.id)}>Mais informações</button>
-        </div>
-      )
-    })
-
     return (
-      <div>
-        <h1>Detalhes dos serviços</h1>
-        <button onClick={this.props.irHome}> Home </button>
-        <div>{listaJobs}</div>
-      </div>
+      <TelaDetalhes>
+        <Headerapp>
+          <a href="Home" onClick={this.props.irHome}>
+            <img
+              src="https://i.postimg.cc/VsX1fLHZ/Design-sem-nome.png"
+              alt="Logo de um ninja."
+            />
+          </a>
+
+          <p>O talento certo, no momento certo.</p>
+
+          <ButtonHeader>
+            <IconButton
+              edge="end"
+              aria-label="delete"
+              onClick={this.props.irCarrinho}
+            >
+              <WorkIcon />
+            </IconButton>
+          </ButtonHeader>
+        </Headerapp>
+
+        <TituloDetalhes>
+          <h3>Detalhes do serviço</h3>
+        </TituloDetalhes>
+        <Body>
+          <p>{this.props.selected.title}</p>
+          <p>Descrição: {this.props.selected.description}</p>
+          <p>Disponibilidade: {this.props.selected.dueDate}</p>
+          <p>R$ {this.props.selected.price}</p>
+          <p>
+            Formas de pagamento aceitas: {this.props.selected.paymentMethods}
+          </p>
+          <ButtonDetalhes>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.props.irFiltrosLista}
+            >
+              ← Voltar para a lista
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.props.irCarrinho}
+            >
+              <WorkIcon />
+              {'          '}Contratar Serviço{'          '}
+              <WorkIcon />
+            </Button>
+          </ButtonDetalhes>
+        </Body>
+      </TelaDetalhes>
     )
   }
 }

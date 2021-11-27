@@ -94,6 +94,7 @@ export default class FiltrosLista extends React.Component {
           price={item.price}
           paymentMethods={item.paymentMethods}
           dueDate={item.dueDate}
+          irDetalhesServico={this.props.irDetalhesServico}
         />
       )
     })

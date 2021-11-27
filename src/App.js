@@ -11,12 +11,7 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       telaAtual: 'Home',
-      id: '',
-      title: '',
-      description: '',
-      price: '',
-      paymentMethods: [],
-      dueDate: '',
+      selectedCard: null,
       carrinho: []
     }
 
@@ -25,7 +20,6 @@ export default class App extends React.Component {
     this.irFiltrosLista = this.irFiltrosLista.bind(this)
     this.irDetalhesServico = this.irDetalhesServico.bind(this)
     this.irCarrinho = this.irCarrinho.bind(this)
-    this.handleCardDetalhes = this.handleCardDetalhes.bind(this)
   }
   escolheTela = () => {
     switch (this.state.telaAtual) {
@@ -52,16 +46,16 @@ export default class App extends React.Component {
       case '+ Detalhes Serviço':
         return (
           <DetalhesServico
-            selectedId={this.state.idFicha}
+            selected={this.state.selectedCard}
             irHome={this.irHome}
+            irFiltrosLista={this.irFiltrosLista}
             irCarrinho={this.irCarrinho}
-            handleCardDetalhes={this.handleCardDetalhes}
           />
         )
       case 'Carrinho':
         return (
           <Carrinho
-            selectedId={this.state.carrinho}
+            selected={this.state.selectedCard}
             irHome={this.irHome}
             irFiltrosLista={this.irFiltrosLista}
           />
@@ -83,30 +77,22 @@ export default class App extends React.Component {
     this.setState({ telaAtual: 'Filtros e lista' })
   }
 
-  irDetalhesServico = id => {
-    this.setState({ telaAtual: '+ Detalhes Serviço', idFicha: id })
+  irDetalhesServico = item => {
+    this.setState({
+      telaAtual: '+ Detalhes Serviço',
+      selectedCard: item
+    })
   }
 
   irCarrinho = id => {
     this.setState({ telaAtual: 'Carrinho', id: this.state.carrinho })
   }
 
-  addCarrinho = id => {
-    const novoCarrinho = this.state.carrinho.push(id)
+  addCarrinho = item => {
+    const novoCarrinho = [...this.state.carrinho]
+    novoCarrinho.push(item)
     this.setState({ carrinho: novoCarrinho })
     console.log(novoCarrinho, 'adcionou ao carrinho?')
-  }
-
-  handleCardDetalhes = item => {
-    const precoModificado = Number(item.price)
-    this.setState({
-      id: item.id,
-      title: item.title,
-      description: item.description,
-      price: precoModificado,
-      paymentMethods: [item.paymentMethods],
-      dueDate: item.dueDate
-    })
   }
 
   render() {
