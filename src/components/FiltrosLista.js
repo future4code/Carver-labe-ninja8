@@ -1,167 +1,163 @@
-import React from "react";
-import axios from "axios";
-
+import React from 'react'
+import axios from 'axios'
+import CardItem from './CardBusca'
+import {
+  HeaderApp,
+  ButtonHeader,
+  TelaFiltro,
+  InputsFiltro,
+  GridCards
+} from './FiltrosStyles'
+import WorkIcon from '@material-ui/icons/Work'
+import IconButton from '@material-ui/core/IconButton'
 
 export default class FiltrosLista extends React.Component {
   state = {
-    prestadores: "",
     listaDePrestadores: [],
     order: 1,
     qntDePrestadores: 0,
-    inputValorMaximo: "",
-    inputValorMinimo: "",
-    inputPrestador: "",
-
+    inputValorMaximo: '',
+    inputValorMinimo: '',
+    inputPrestador: ''
   }
 
-  componentDidMount(){
-      this.getAllJobs();
-             
+  componentDidMount() {
+    this.getAllJobs()
   }
 
-  updateOrder = (event) => {
+  updateOrder = event => {
     this.setState({ order: event.target.value })
   }
-  //----------------------------------
-  onChangeMaximo = (event) => {
-    this.setState({ inputValorMaximo: event.target.value });
-  };
 
-  onChangeMinimo = (event) => {
-    this.setState({ inputValorMinimo: event.target.value });
-  };
+  onChangeMaximo = event => {
+    const precoModificado = Number(event.target.value)
+    this.setState({ inputValorMaximo: precoModificado })
+  }
 
-  onChangePrestador = (event) => {
-    this.setState({ inputPrestador: event.target.value });
-  };
+  onChangeMinimo = event => {
+    const precoModificado = Number(event.target.value)
+    this.setState({ inputValorMinimo: precoModificado })
+  }
+
+  onChangePrestador = event => {
+    this.setState({ inputPrestador: event.target.value })
+  }
 
   mudarQnt = () => {
     this.setState({})
   }
 
-
   getAllJobs = () => {
-    axios.get("https://labeninjas.herokuapp.com/jobs",{
-      headers: {
-        Authorization: "3d475e97-ff99-4efb-af1a-8a21d2ce38dd"
-      }
-         
-    })
-    .then((resposta) =>{
-      this.setState({prestadores:resposta.data.jobs})
-    })
-    .catch((erro)=>{
-      console.log(erro.response)
-    })
+    const url = `https://labeninjas.herokuapp.com/jobs`
+    axios
+      .get(url, {
+        headers: {
+          Authorization: '3d475e97-ff99-4efb-af1a-8a21d2ce38dd'
+        }
+      })
+      .then(resposta => {
+        this.setState({ listaDePrestadores: resposta.data.jobs })
+      })
+      .catch(erro => {
+        console.log(erro.response)
+      })
+  }
+
+  render() {
+    let listaNova = [...this.state.listaDePrestadores]
+
+    if (this.state.inputPrestador !== '') {
+      listaNova = listaNova.filter(element => {
+        const search = new RegExp(this.state.inputPrestador, 'i')
+        return element.title.match(search)
+      })
     }
 
+    if (this.state.inputValorMinimo !== '') {
+      listaNova = listaNova.filter(
+        element => element.price > this.state.inputValorMinimo
+      )
+    }
 
+    if (this.state.inputValorMaximo !== '') {
+      listaNova = listaNova.filter(
+        element => element.price < this.state.inputValorMaximo
+      )
+    }
 
-  filtrarPrestadores = (id) => {
-      const url = `https://labeninjas.herokuapp.com/jobs` //${id}
-      axios.get(url, {
-          headers:{
-              Authorization: "3d475e97-ff99-4efb-af1a-8a21d2ce38dd"
-          }
-      }) 
-      .then((res) => {
-          console.log(res.data)
-          this.setState({prestadores: res.data.result.title})
-          this.setState({prestadores: res.data.result.description})
-          this.setState({prestadores: res.data.result.price})
-          
-      })
-      .catch ((err) => {
-          alert("erro")
-      })
-  
-      
-  }
+    const mostrarLista = listaNova.map(item => {
+      return (
+        <CardItem
+          key={item.id}
+          title={item.title}
+          description={item.description}
+          price={item.price}
+          paymentMethods={item.paymentMethods}
+          dueDate={item.dueDate}
+        />
+      )
+    })
 
-
-
-
-
-  
-  render() {
-   
     return (
-        
-
-            <div>
-              
-            
-
-
-
-            <h1>Filtros</h1>
-            <p> Valor Máximo</p>
-            <input
-              type="Number"
-              value={this.state.inputValorMaximo}
-              onChange={this.onChangeMaximo}
-              placeholder="Preço Máximo"
+      <TelaFiltro>
+        <HeaderApp>
+          <a href="Home" onClick={this.props.irHome}>
+            <img
+              src="https://i.postimg.cc/VsX1fLHZ/Design-sem-nome.png"
+              alt="Logo de um ninja."
             />
-            <p> Valor Mínimo</p>
+          </a>
+
+          <p>O talento certo, no momento certo.</p>
+
+          <ButtonHeader>
+            <IconButton
+              edge="end"
+              aria-label="delete"
+              onClick={this.props.irCarrinho}
+            >
+              <WorkIcon />
+            </IconButton>
+          </ButtonHeader>
+        </HeaderApp>
+        <InputsFiltro>
+          <input
+            type="Number"
+            value={this.state.inputValorMaximo}
+            onChange={this.onChangeMaximo}
+            placeholder="Valor máximo"
+          />
+
+          <input
+            type="Number"
+            value={this.state.inputValorMinimo}
+            onChange={this.onChangeMinimo}
+            placeholder="Valor mínimo"
+          />
+
+          <div>
             <input
-              type="Number"
-              value={this.state.inputValorMinimo}
-              onChange={this.onChangeMinimo}
-              placeholder="Preço Mínimo"
+              type="text"
+              placeholder="Buscar por serviço"
+              onChange={this.onChangePrestador}
+              value={this.state.inputPrestador}
             />
-            <p> Buscar Prestador</p>
+          </div>
 
-            <div>
-              <input
-                defaultValue=""
-                type="text"
-                onChange={this.onChangePrestador}
-                placeholder="Digite aqui"
-              />
-            </div>
+          <div>
+            <select
+              name="order"
+              value={this.state.order}
+              onChange={this.updateOrder}
+            >
+              <option value={1}>Crescente</option>
+              <option value={-1}>Decrescente</option>
+            </select>
+          </div>
+        </InputsFiltro>
 
-          
-
-            <div>
-              <span>
-                <label>
-                  Ordenação:
-                  <select name="order" value={this.state.order} onChange={this.updateOrder}>
-                    <option value={1}>Crescente</option>
-                    <option value={-1}>Decrescente</option>
-                  </select>
-                </label>
-              </span>
-            </div>
-
-            <div>
-              {this.state.listaDePrestadores.filter(listaDePrestadores => {
-                return listaDePrestadores.nome.toLowerCase().includes(this.state.inputPrestador.toLowerCase())
-              })
-
-                .filter(listaDePrestadores => {
-                  return this.state.inputValorMinimo === "" || listaDePrestadores.preco >= this.state.inputValorMinimo
-                })
-                .filter(listaDePrestadores => {
-                  return this.state.inputValorMaximo === "" || listaDePrestadores.preco <= this.state.inputValorMaximo
-                })
-                .sort((primeiroPost, segundoPost) => {
-                  return this.state.order * (primeiroPost.preco - segundoPost.preco)
-                })
-                }
-            </div>
-
-         
-
-          
-            
-         
-      </div>
-
-
-
-    );
+        <GridCards>{mostrarLista}</GridCards>
+      </TelaFiltro>
+    )
   }
-
-
 }

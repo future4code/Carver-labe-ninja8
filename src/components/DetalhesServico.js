@@ -2,8 +2,15 @@ import React from 'react'
 import axios from 'axios'
 
 export default class TelaListaPrestadores extends React.Component {
-  state = {
-    prestadores: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      id: '',
+      title: 'Nome prestador',
+      description: 'Serviço prestador em detalhes da descrição.',
+      price: '2.000 converter em number',
+      dueDate: '22/12/21'
+    }
   }
 
   pegarJobs = () => {

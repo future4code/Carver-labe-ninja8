@@ -5,6 +5,7 @@ export const TelaHome = styled.div`
   min-height: 100vh;
   max-width: 100vw;
   min-width: 100vw;
+  box-sizing: border-box;
 `
 
 export const Headerapp = styled.div`
@@ -48,7 +49,7 @@ export const Body = styled.div`
 
   background-color: #f5f4fd;
   img {
-    margin-top: 5vh;
+    margin-top: 2vh;
   }
 `
 export const ButtonLayout = styled.div`
