@@ -146,7 +146,7 @@ export default class FiltrosLista extends React.Component {
               <option value={-1}>Decrescente</option>
             </select>
           </div>
-          <button onClick={this.filtrosDeBusca}>Buscar</button>
+        
         </InputsFiltro>
 
         <GridCards>{mostrarLista}</GridCards>

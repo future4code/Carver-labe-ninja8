@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      telaAtual: 'Filtros e lista',
+      telaAtual: 'Home',
       id: '',
       title: '',
       description: '',
@@ -32,7 +32,7 @@ export default class App extends React.Component {
       case 'Home':
         return (
           <Home
-            irParaCadastro={this.irCadastro}
+            irCadastro={this.irCadastro}
             irFiltrosLista={this.irFiltrosLista}
             irCarrinho={this.irCarrinho}
           />

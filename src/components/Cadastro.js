@@ -59,6 +59,9 @@ export default class Cadastro extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.addNinja()
+  }
   addNinja = () => {
     const url = `https://labeninjas.herokuapp.com/jobs`
     const body = {
