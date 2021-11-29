@@ -1,19 +1,22 @@
-# Projeto: LabeNinjas 💻
+<div style="text-align:center"><img src="https://i.postimg.cc/YC8JDN1K/labeninjas2-removebg-preview.png" height=300px/></div>
+<h1 style="text-align:center">Projeto LabeNinjas</h1>
+<h3 style="text-align:center">Site de cadastramento e busca de prestadores de serviços para contratação.<h3>
+<div style="text-align:center"><img src="https://img.shields.io/badge/-processo%20de%20aprendizagem-yellow"> <img src="https://img.shields.io/badge/-HTML-orange"> <img src="https://img.shields.io/badge/-CSS-blue"> <img src="https://img.shields.io/badge/-JS-yellow"></div>
 
 status: finalizado ✔️
 
-### O Labeninjas é um projeto de uma rede de colaboração, onde um contratante pode contratar um serviço e uma pesssoa pode se cadastrar na plataforma para vir a ser contratado
-
 ### Essa aplicação possui:
 + Uma página "Home" onde o usuário escolhe se cadastrar como prestador ou contratar o serviço de alguém;
-+ Uma página de Cards onde se pode filtrar de acordo com valores máximos e mínimos e por caracteres;
-+ Uma página de detalhes sobre os serviços de um prestador em específico
-
++ Uma página "Cadastro" onde o usuário cadastra seu serviço;
++ Uma página "Busca" onde o usuário busca com o auxílio de filtros o serviço que mais atende suas necessidades;
++ Uma página "Detalhes" onde o usuário analisa mais informações sobre aquele serviço; 
++ Uma página "Carrinho" onde o usuário finaliza a contratação; 
+  
 ### As tecnologias utilizadas nesse projeto foram:
 + React JS;
-+ Material UI
++ Rquisições através do Axios;  
++ Material UI;
 
 ### Como rodar essa aplicação:
-Você pode rodar essa aplicação apenas clicando no link do surge abaixo:
-<link>aloof-boy.surge.sh
-</link>
+Quer ver o resultado? <a href="https:crowded-earth.surge.sh" target="_blank">Clique aqui</a>
+
