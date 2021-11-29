@@ -36,6 +36,7 @@ export default class App extends React.Component {
       case 'Filtros e lista':
         return (
           <FiltrosLista
+            selected={this.state.selectedCard}
             irHome={this.irHome}
             irCarrinho={this.irCarrinho}
             irDetalhesServico={this.irDetalhesServico}
@@ -56,6 +57,7 @@ export default class App extends React.Component {
         return (
           <Carrinho
             selected={this.state.selectedCard}
+            carrinho={this.state.carrinho}
             irHome={this.irHome}
             irFiltrosLista={this.irFiltrosLista}
           />
@@ -89,9 +91,9 @@ export default class App extends React.Component {
   }
 
   addCarrinho = item => {
+    this.setState({ selectedCard: item })
     const novoCarrinho = [...this.state.carrinho]
     novoCarrinho.push(item)
-    this.setState({ carrinho: novoCarrinho })
     console.log(novoCarrinho, 'adcionou ao carrinho?')
   }
 

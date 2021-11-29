@@ -22,10 +22,10 @@ export default class SimpleCard extends React.Component {
                 {this.props.title}
               </Typography>
               <Typography className="price" color="textSecondary">
-                {this.props.price}
+                {price}
               </Typography>
               <Typography variant="body2" component="p">
-                {this.props.description}
+                {description}
               </Typography>
             </Conteudo>
           </CardContent>
@@ -50,7 +50,15 @@ export default class SimpleCard extends React.Component {
               <Cor2>
                 <Button
                   variant="contained"
-                  onClick={() => this.props.addCarrinho(this.props)}
+                  onClick={() =>
+                    this.props.addCarrinho({
+                      title,
+                      description,
+                      price,
+                      paymentMethods,
+                      dueDate
+                    })
+                  }
                 >
                   Contratar
                 </Button>
