@@ -7,61 +7,9 @@ import Typography from '@material-ui/core/Typography'
 import { CardItem, Conteudo, Cor1, Cor2, Espacamento } from './CardBuscaStyles'
 
 export default class SimpleCard extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      id: '',
-      title: '',
-      description: '',
-      price: '',
-      paymentMethods: [],
-      dueDate: ''
-    }
-    this.handleId = this.handleId.bind(this)
-    this.handleTitulo = this.handleTitulo.bind(this)
-    this.handleDescricao = this.handleDescricao.bind(this)
-    this.handlePrice = this.handlePrice.bind(this)
-    this.handleformaPagamento = this.handleformaPagamento.bind(this)
-    this.handlePrazo = this.handlePrazo.bind(this)
-  }
-
-  handleId = item => {
-    this.setState({
-      id: item.id
-    })
-  }
-
-  handleTitulo = item => {
-    this.setState({
-      title: item.title
-    })
-  }
-
-  handleDescricao = item => {
-    this.setState({
-      description: item.description
-    })
-  }
-
-  handlePrice = item => {
-    const precoModificado = Number(item.price)
-    this.setState({
-      price: precoModificado
-    })
-  }
-  handleformaPagamento = item => {
-    this.setState({
-      paymentMethods: item.paymentMethods
-    })
-  }
-
-  handlePrazo = item => {
-    this.setState({
-      dueDate: item.dueDate
-    })
-  }
-
   render() {
+    const { title, description, price, paymentMethods, dueDate } = this.props
+
     return (
       <CardItem>
         <Card>
@@ -86,7 +34,15 @@ export default class SimpleCard extends React.Component {
               <Cor1>
                 <Button
                   size="small"
-                  onClick={() => this.props.irDetalhesServico(this.props.key)}
+                  onClick={() =>
+                    this.props.irDetalhesServico({
+                      title,
+                      description,
+                      price,
+                      paymentMethods,
+                      dueDate
+                    })
+                  }
                 >
                   + Detalhes
                 </Button>
@@ -94,9 +50,8 @@ export default class SimpleCard extends React.Component {
               <Cor2>
                 <Button
                   variant="contained"
-                  onClick={() => this.props.addCarrinho(this.props.key)}
+                  onClick={() => this.props.addCarrinho(this.props)}
                 >
-                  {/* Rodrigo addCarrinho é .props pq está no app veja como fazer funcionar lá */}
                   Contratar
                 </Button>
               </Cor2>
