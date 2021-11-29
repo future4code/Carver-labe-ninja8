@@ -1,12 +1,19 @@
 import styled from 'styled-components'
 
 export const ListagemCarrinho = styled.div`
-  min-height: 20vh;
-  max-width: 100vw;
-  padding: 30px;
+  min-height: 10vh;
+  min-width: 85vw;
+  max-width: 85vw;
   color: #7869bf;
   background-color: white;
-`
-export const ItemStyle = styled.div`
-  color: #7869bf;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  p {
+    text-align: center;
+    display: inline-block;
+
+    align-items: center;
+  }
 `

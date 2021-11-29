@@ -7,34 +7,48 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
 import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
 import DeleteIcon from '@material-ui/icons/Delete'
-import { ListagemCarrinho, ItemStyle } from './CardCarrinhoStyles'
+import { ListagemCarrinho } from './CardCarrinhoStyles'
 
 export default class CardCarrinho extends React.Component {
   render() {
+    const { id, title, description, price, paymentMethods, dueDate } =
+      this.props
     return (
       <ListagemCarrinho>
-        <Typography variant="h6">Contratação de serviços:</Typography>
         <List>
-          <ItemStyle>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <WorkIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText>
-                <p>{this.props.title}</p>
-                <p>{this.props.price}</p>
-              </ListItemText>
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          </ItemStyle>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <WorkIcon />
+              </Avatar>
+            </ListItemAvatar>
+
+            <ListItemText>
+              <p>Serviço: {this.props.title} </p>
+
+              <p> - Preço da contratação: R$ {this.props.price}</p>
+            </ListItemText>
+
+            <ListItemSecondaryAction>
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={() =>
+                  this.props.deletaServicoCarrinho({
+                    id,
+                    title,
+                    description,
+                    price,
+                    paymentMethods,
+                    dueDate
+                  })
+                }
+              >
+                <DeleteIcon />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
         </List>
       </ListagemCarrinho>
     )

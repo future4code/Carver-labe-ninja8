@@ -11,7 +11,8 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       telaAtual: 'Home',
-      selectedCard: null,
+      selectedCardDetalhes: null,
+
       carrinho: []
     }
 
@@ -19,6 +20,8 @@ export default class App extends React.Component {
     this.irCadastro = this.irCadastro.bind(this)
     this.irFiltrosLista = this.irFiltrosLista.bind(this)
     this.irDetalhesServico = this.irDetalhesServico.bind(this)
+    this.addCarrinho = this.addCarrinho.bind(this)
+    this.deletaServicoCarrinho = this.deletaServicoCarrinho.bind(this)
     this.irCarrinho = this.irCarrinho.bind(this)
   }
   escolheTela = () => {
@@ -36,8 +39,9 @@ export default class App extends React.Component {
       case 'Filtros e lista':
         return (
           <FiltrosLista
-            selected={this.state.selectedCard}
+            selectedDetalhes={this.state.selectedCardDetalhes}
             irHome={this.irHome}
+            addCarrinho={this.addCarrinho}
             irCarrinho={this.irCarrinho}
             irDetalhesServico={this.irDetalhesServico}
             handleCardDetalhes={this.handleCardDetalhes}
@@ -47,19 +51,20 @@ export default class App extends React.Component {
       case '+ Detalhes Serviço':
         return (
           <DetalhesServico
-            selected={this.state.selectedCard}
+            selectedDetalhes={this.state.selectedCardDetalhes}
             irHome={this.irHome}
             irFiltrosLista={this.irFiltrosLista}
+            addCarrinho={this.addCarrinho}
             irCarrinho={this.irCarrinho}
           />
         )
       case 'Carrinho':
         return (
           <Carrinho
-            selected={this.state.selectedCard}
             carrinho={this.state.carrinho}
             irHome={this.irHome}
             irFiltrosLista={this.irFiltrosLista}
+            deletaServicoCarrinho={this.deletaServicoCarrinho}
           />
         )
       default:
@@ -82,19 +87,36 @@ export default class App extends React.Component {
   irDetalhesServico = item => {
     this.setState({
       telaAtual: '+ Detalhes Serviço',
-      selectedCard: item
+      selectedCardDetalhes: item
     })
   }
 
-  irCarrinho = id => {
-    this.setState({ telaAtual: 'Carrinho', id: this.state.carrinho })
+  irCarrinho = () => {
+    this.setState({ telaAtual: 'Carrinho' })
   }
 
   addCarrinho = item => {
-    this.setState({ selectedCard: item })
     const novoCarrinho = [...this.state.carrinho]
     novoCarrinho.push(item)
-    console.log(novoCarrinho, 'adcionou ao carrinho?')
+    this.setState({
+      carrinho: novoCarrinho
+    })
+    alert('Serviço adcionado ao carrinho!')
+  }
+
+  deletaServicoCarrinho = item => {
+    console.log(item)
+    const novoCarrinho = [...this.state.carrinho]
+    const findById = value => {
+      return value.id === item.id
+    }
+    const index = novoCarrinho.findIndex(findById)
+    console.log(index)
+    novoCarrinho.splice(index, 1)
+    this.setState({ carrinho: novoCarrinho })
+    alert('Serviço removido do carrinho!')
+
+    console.log(novoCarrinho, 'deletou ao carrinho?')
   }
 
   render() {

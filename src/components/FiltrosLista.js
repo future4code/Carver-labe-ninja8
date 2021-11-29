@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import CardItem from './CardBusca'
+import CardBusca from './CardBusca'
 import {
   HeaderApp,
   ButtonHeader,
@@ -87,14 +87,16 @@ export default class FiltrosLista extends React.Component {
 
     const mostrarLista = listaNova.map(item => {
       return (
-        <CardItem
+        <CardBusca
           key={item.id}
+          id={item.id}
           title={item.title}
           description={item.description}
           price={item.price}
           paymentMethods={item.paymentMethods}
           dueDate={item.dueDate}
           irDetalhesServico={this.props.irDetalhesServico}
+          addCarrinho={this.props.addCarrinho}
         />
       )
     })

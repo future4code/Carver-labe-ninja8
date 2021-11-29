@@ -17,13 +17,6 @@ export const HeaderApp = styled.div`
   align-items: center;
   background-color: #7869bf;
   justify-content: space-between;
-  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
-
-  -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
-
-  -ms-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
-
-  -o-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
 
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
   img {

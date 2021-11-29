@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CardItem = styled.div`
+export const CardBuscaStyle = styled.div`
   min-height: 40vh;
   min-width: 35vw;
   max-width: 35vw;

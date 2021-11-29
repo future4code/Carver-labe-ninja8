@@ -4,14 +4,21 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import { CardItem, Conteudo, Cor1, Cor2, Espacamento } from './CardBuscaStyles'
+import {
+  CardBuscaStyle,
+  Conteudo,
+  Cor1,
+  Cor2,
+  Espacamento
+} from './CardBuscaStyles'
 
-export default class SimpleCard extends React.Component {
+export default class CardBusca extends React.Component {
   render() {
-    const { title, description, price, paymentMethods, dueDate } = this.props
+    const { id, title, description, price, paymentMethods, dueDate } =
+      this.props
 
     return (
-      <CardItem>
+      <CardBuscaStyle>
         <Card>
           <CardContent>
             <Conteudo>
@@ -52,6 +59,7 @@ export default class SimpleCard extends React.Component {
                   variant="contained"
                   onClick={() =>
                     this.props.addCarrinho({
+                      id,
                       title,
                       description,
                       price,
@@ -66,7 +74,7 @@ export default class SimpleCard extends React.Component {
             </Espacamento>
           </CardActions>
         </Card>
-      </CardItem>
+      </CardBuscaStyle>
     )
   }
 }
