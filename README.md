@@ -18,5 +18,5 @@ status: finalizado ✔️
 + Material UI;
 
 ### Como rodar essa aplicação:
-Quer ver o resultado? <a href="https:crowded-earth.surge.sh" target="_blank">Clique aqui</a>
+Quer ver o resultado? <a href="https://crowded-earth.surge.sh/" target="_blank">Clique aqui</a>
 
