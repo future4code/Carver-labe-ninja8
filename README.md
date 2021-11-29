@@ -1,7 +1,7 @@
 <div align="center"><img src="https://i.postimg.cc/YC8JDN1K/labeninjas2-removebg-preview.png" height=300px/></div>
 <h1 align="center">Projeto LabeNinjas</h1>
 <h3 align="center">Site de cadastramento e busca de prestadores de serviços para contratação.<h3>
-<div align="center"><img src="https://img.shields.io/badge/-processo%20de%20aprendizagem-yellow"> <img src="https://img.shields.io/badge/-HTML-orange"> <img src="https://img.shields.io/badge/-CSS-blue"> <img src="https://img.shields.io/badge/-JS-yellow"></div>
+<div align="center"><img src="https://img.shields.io/badge/-processo%20de%20aprendizagem-yellow"> <img src="https://img.shields.io/badge/-React-9cf"> <img src="https://img.shields.io/badge/-CSS-blue"> <img src="https://img.shields.io/badge/-JS-yellow"></div>
 
 status: finalizado ✔️
 
