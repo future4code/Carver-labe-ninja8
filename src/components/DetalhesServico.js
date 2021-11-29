@@ -13,6 +13,8 @@ import Button from '@material-ui/core/Button'
 
 export default class DetalhesServicos extends React.Component {
   render() {
+    const { id, title, description, price, paymentMethods, dueDate } =
+      this.props
     return (
       <TelaDetalhes>
         <Headerapp>
@@ -40,12 +42,13 @@ export default class DetalhesServicos extends React.Component {
           <h3>Detalhes do serviço</h3>
         </TituloDetalhes>
         <Body>
-          <p>{this.props.selected.title}</p>
-          <p>Descrição: {this.props.selected.description}</p>
-          <p>Disponibilidade: {this.props.selected.dueDate}</p>
-          <p>R$ {this.props.selected.price}</p>
+          <p>{this.props.selectedDetalhes.title}</p>
+          <p>Descrição: {this.props.selectedDetalhes.description}</p>
+          <p>Disponibilidade: {this.props.selectedDetalhes.dueDate}</p>
+          <p>R$ {this.props.selectedDetalhes.price}</p>
           <p>
-            Formas de pagamento aceitas: {this.props.selected.paymentMethods}
+            Formas de pagamento aceitas:{' '}
+            {this.props.selectedDetalhes.paymentMethods}
           </p>
           <ButtonDetalhes>
             <Button
@@ -55,10 +58,20 @@ export default class DetalhesServicos extends React.Component {
             >
               ← Voltar para a lista
             </Button>
+
             <Button
               variant="contained"
               color="primary"
-              onClick={this.props.irCarrinho}
+              onClick={() =>
+                this.props.addCarrinho({
+                  id,
+                  title,
+                  description,
+                  price,
+                  paymentMethods,
+                  dueDate
+                })
+              }
             >
               <WorkIcon />
               {'          '}Contratar Serviço{'          '}

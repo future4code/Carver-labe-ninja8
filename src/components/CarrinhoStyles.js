@@ -26,6 +26,7 @@ export const HeaderApp = styled.div`
   -o-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
 
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+
   img {
     height: 10vh;
     width: auto;
@@ -58,5 +59,37 @@ export const Body = styled.div`
     letter-spacing: 2px;
     color: #7869bf;
     text-align: center;
+  }
+  h3 {
+    font-size: 2rem;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+    color: #7869bf;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+`
+
+export const ButtonCarrinho = styled.div`
+  button {
+    margin-top: 16px;
+    color: white;
+    background-color: #7869bf;
+    border-radius: 4px;
+
+    font-size: 1rem;
+    font-family: sans-serif;
+    line-height: 1.4rem;
+    width: 70vw;
+    max-width: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    &:hover {
+      color: white;
+      background-color: #9281e3;
+    }
   }
 `

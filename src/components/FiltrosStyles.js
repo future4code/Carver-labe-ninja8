@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const TelaFiltro = styled.div`
   height: auto;
-  min-height: 200vh;
+  min-height: 300vh;
   min-width: 100vw;
   max-width: 100vw;
   min-width: 100vw;

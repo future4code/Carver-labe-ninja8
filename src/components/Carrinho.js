@@ -1,79 +1,50 @@
 import React from 'react'
-import Axios from 'axios'
 import CardCarrinho from './CardCarrinho'
-import { TelaCarrinho, HeaderApp, ButtonHeader, Body } from './CarrinhoStyles'
+import {
+  TelaCarrinho,
+  HeaderApp,
+  ButtonHeader,
+  Body,
+  ButtonCarrinho
+} from './CarrinhoStyles'
 import WorkIcon from '@material-ui/icons/Work'
 import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
-export class Carrinho extends Component {
-    state = {
-        carrinho: []
-    }
+export default class Carrinho extends React.Component {
+  finalizar = () => {
+    alert('Contratação finalizada!')
+  }
 
-    adicionarCarrinho = (id) => {
-        const url = `https://labeninjas.herokuapp.com/jobs/${id}`
-        Axios.get(url, {
-            headers: {
-                Authorization: "3d475e97-ff99-4efb-af1a-8a21d2ce38dd"
-            }
-        })
-            .then((res) => {
-                this.setState({ carrinho: res.data })
-            })
-            .catch((err) => {
-                alert("Ocorreu um erro")
-            })
-    }
+  render() {
+    const listaAtualizada = this.props.carrinho
+    const listaAposAdcionar = [...listaAtualizada]
 
-    deletaServico = (id) => {
-        const url = `https://labeninjas.herokuapp.com/jobs/${id}`
-        Axios.delete(url, {
-            headers: {
-                Authorization: "3d475e97-ff99-4efb-af1a-8a21d2ce38dd"
-            }
-        })
-            .then((res) => {
-                alert("Item deletado com sucesso");
-                this.adicionarCarrinho()
-            })
-            .catch((err) => {
-                alert("Ocorreu um erro")
-            })
-    }
+    const mostrarLista = listaAposAdcionar.map(item => {
+      return (
+        <CardCarrinho
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          price={item.price}
+          deletaServicoCarrinho={this.props.deletaServicoCarrinho}
+        />
+      )
+    })
 
-    valorTotal = () => {
-        let precoTotal = 0;
+    const mostrarValorTotal = listaAposAdcionar.map(item => {
+      let precoTotal = 0
+      let precoServico = item.price
+      if (precoServico === 0) {
+        return false
+      } else {
+        return (precoTotal = precoTotal + precoServico)
+      }
+    })
 
-        this.state.carrinho.map((item) => {
-            precoTotal += item.price
-        })
-        if (precoTotal === 0) {
-            return false
-        } else {
-            return <div><b>Total: R$ </b>{precoTotal.toFixed(2)}</div>
-        }
-    }
-// const listaAtualizada = this.props.carrinho
-//     const listaAposAdcionar = [...listaAtualizada]
-
-//     const mostrarLista = listaAposAdcionar.map(item => {
-//       return <CardCarrinho title={item.title} price={item.price} />
-//     })
-
-    render() {
-      
-        console.log(this.state.carrinho);
-        const listaServicos = this.state.carrinho.map((item) => {
-            return (
-                <CardPlaylist key={item.id}>
-                    {item.title}
-                    {item.price}
-                    <button onClick={() => this.deletaServico(item.id)}>X</button>
-                </CardPlaylist>
-            )
-        })
-        return (
-          <TelaCarrinho>
+    return (
+      <TelaCarrinho>
         <HeaderApp>
           <a href="Home" onClick={this.props.irHome}>
             <img
@@ -95,10 +66,33 @@ export class Carrinho extends Component {
           </ButtonHeader>
         </HeaderApp>
 
+        <Body>
+          <Typography variant="h6">
+            <h3>Contratação de serviços:</h3>
+          </Typography>
+          {mostrarLista}
 
-        <Body>{mostrarLista}</Body>
+          <Typography variant="h5" component="h2">
+            <p>Valor total das contratações: R$ {mostrarValorTotal}</p>
+          </Typography>
+          <ButtonCarrinho>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.props.irFiltrosLista}
+            >
+              Voltar para lista
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.finalizar}
+            >
+              Finalizar contratação!
+            </Button>
+          </ButtonCarrinho>
+        </Body>
       </TelaCarrinho>
     )
   }
 }
-
