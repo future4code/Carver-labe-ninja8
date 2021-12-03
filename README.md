@@ -1,68 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center"><img src="https://i.postimg.cc/YC8JDN1K/labeninjas2-removebg-preview.png" height=300px/></div>
+<h1 align="center">Projeto LabeNinjas</h1>
+<h3 align="center">Site de cadastramento e busca de prestadores de serviços para contratação.<h3>
+<div align="center"><img src="https://img.shields.io/badge/-processo%20de%20aprendizagem-yellow"> <img src="https://img.shields.io/badge/-React-9cf"> <img src="https://img.shields.io/badge/-CSS-blue"> <img src="https://img.shields.io/badge/-JS-yellow"></div>
 
-## Available Scripts
 
-In the project directory, you can run:
+### Objetivo do projeto:
++ O objetivo deste terceiro trabalho em grupo era exercitar os nossos aprendizados do último mês nas linguagens de React, CSS e JS, bem como exercitar nossas habilidades em soft skills trabalhando em grupo no desenvolvimento do projeto que tinha como temática diversas opções para escolha.
+  
+ 
+### Essa aplicação possui:
++ Uma página "Home" onde o usuário escolhe se cadastrar como prestador ou contratar o serviço de alguém;
++ Uma página "Cadastro" onde o usuário cadastra seu serviço;
++ Uma página "Busca" onde o usuário busca com o auxílio de filtros o serviço que mais atende suas necessidades;
++ Uma página "Detalhes" onde o usuário analisa mais informações sobre aquele serviço; 
++ Uma página "Carrinho" onde o usuário finaliza a contratação; 
 
-### `npm start`
+  
+### As tecnologias utilizadas nesse projeto foram:
++ React JS;
++ Rquisições através do Axios;  
++ Material UI;
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  
+### Como rodar essa aplicação:
+Quer ver o resultado? <a href="https://crowded-earth.surge.sh/" target="_blank">Clique aqui</a>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  
+<p>“A única habilidade competitiva de longo prazo é a capacidade de aprender.”</p>
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
